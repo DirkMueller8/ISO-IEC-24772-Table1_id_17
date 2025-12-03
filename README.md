@@ -1,12 +1,12 @@
 ## Good Coding Principles acc. to ISO/IEC 24772-1:2024
 
-**Standard:** 
+### Standard:### 
 ISO/IEC 24772-1:  
 Programming languages — Avoiding vulnerabilities in programming languages —
 Part 1: Language-independent catalogue of vulnerabilities  
 
 ### Good Coding Recommendation  
-"Beware of short-circuiting behaviour when expressions with side effects are used on the right side of a short-circuited Boolean expression, since a left-hand expression evaluating to false, dictates that the right-hand expression, including function calls with side effects, will not be evaluated."  
+"Beware of short-circuiting behaviour when expressions with side effects are used on the right side of a short-circuited Boolean expression, since a left-hand expression evaluating to false, dictates that the right-hand expression, including function calls with side effects, will not be evaluated.", in Table 1, Number 17, on p. 29   
 
 ### Theory around the Example  
 #### Short-circuit AND (&&)  
@@ -29,9 +29,12 @@ static bool SideEffectIncrement(string name)
     return true;
 }
 ```  
+where the variable counter is defined as static.  
 #### Expected sample output  
-•	Example 1 (&&): no "Invoking RHS..." line; counter remains 0.  
-•	Example 2 (&): shows "Invoking RHS..." and counter becomes 1.  
-•	Example 3 (||): no RHS invocation.  
-•	Example 4 (|): RHS invoked and counter becomes 1.  
-•	Safe alternative: forced RHS invoked before combining.  
+•	Example 1 (`&&`): no "Invoking RHS..." line; counter remains 0.  
+•	Example 2 (`&`): shows "Invoking RHS..." and counter becomes 1.  
+•	Example 3 (`||`): no RHS invocation.  
+•	Example 4 (`|`): RHS invoked and counter becomes 1.  
+
+##### Safe alternative:  
+Forced RHS invoked before combining.  
